@@ -13,12 +13,12 @@ const dummyProject = {
   languages_url: null,
   pushed_at: null,
 };
-const API = "https://api.github.com";
-const gitHubQuery = "/repos?sort=updated&direction=desc";
+const API = "https://api.github.com";   
+const gitHubQuery = "repos?sort=updated&direction=desc";
 
 const Project = ({ heading, username, length, specfic }) => {
-  const allReposAPI = `${API}/users/${username}/${gitHubQuerrry}`;
-  const specficReposAPI = `${API}/repos/${username}`;
+  const allReposAPI = `${API}/users/${username}/${gitHubQuery}`;
+  const specficReposAPI = `${API}/repos`;
   const dummyProjectsArr = new Array(length + specfic.length).fill(
     dummyProject
   );

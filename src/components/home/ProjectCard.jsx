@@ -11,14 +11,16 @@ const ProjectCard = ({ value }) => {
     svn_url,
     stargazers_count,
     languages_url,
-    pushed_at,
+    pushed_at
   } = value;
   return (
     <Col md={6}>
       <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
         <Card.Body>
           <Card.Title as="h5">{name || <Skeleton />} </Card.Title>
-          <Card.Text>{(!description)?"":description || <Skeleton count={3} />} </Card.Text>
+          <Card.Text>
+            {!description ? "" : description || <Skeleton count={3} />}{" "}
+          </Card.Text>
           {svn_url ? <CardButtons svn_url={svn_url} /> : <Skeleton count={2} />}
           <hr />
           {languages_url ? (
@@ -27,7 +29,11 @@ const ProjectCard = ({ value }) => {
             <Skeleton count={3} />
           )}
           {value ? (
-            <CardFooter star_count={stargazers_count} repo_url={svn_url} pushed_at={pushed_at} />
+            <CardFooter
+              star_count={stargazers_count}
+              repo_url={svn_url}
+              pushed_at={pushed_at}
+            />
           ) : (
             <Skeleton />
           )}
@@ -82,8 +88,14 @@ const Language = ({ languages_url, repo_url }) => {
       {array.length
         ? array.map((language) => (
             <a
-              key={language} 
-              className="badge badge-light card-link"
+              key={language}
+              style={{
+                color: "black",
+                borderRadius: "3px",
+                textDecoration: "none",
+                fontWeight: "bold",
+                padding: "4px"
+              }}
               href={repo_url + `/search?l=${language}`}
               target=" _blank"
             >
